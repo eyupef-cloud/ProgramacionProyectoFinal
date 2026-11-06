@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkControl - Estacionamiento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h2>ParkControl</h2>
+    <nav>
+        <a href="#servicios">Servicios</a>
+        <a href="#tarifas">Tarifas</a>
+        <button onclick="mostrarLogin()">Ingresar</button>
+        <button onclick="mostrarRegistro()">Registrarse</button>
+    </nav>
+</header>
+
+<section class="principal">
+    <div>
+        <h1>Tu vehículo, en buenas manos.</h1>
+        <p>Estacionamiento seguro y confiable. Administra tu estadía,
+        consulta tus movimientos y obtén tu factura.</p>
+        <button onclick="mostrarRegistro()">Crear una cuenta</button>
+    </div>
+
+    <div class="imagen">
+        <div class="letra">P</div>
+        <h2>ESTACIONAMIENTO</h2>
+        <p>Espacios disponibles: <strong id="espacios">20</strong></p>
+    </div>
+</section>
+
+<section class="estadisticas">
+    <div>
+        <h2 id="total">20</h2>
+        <p>Espacios totales</p>
+    </div>
+    <div>
+        <h2 id="ocupados">0</h2>
+        <p>Espacios ocupados</p>
+    </div>
+    <div>
+        <h2 id="disponibles">20</h2>
+        <p>Espacios disponibles</p>
+    </div>
+</section>
+
+<section id="servicios" class="seccion">
+    <h2>Nuestros servicios</h2>
+
+    <div class="tarjetas">
+        <div class="tarjeta">
+            <h3>Seguridad</h3>
+            <p>Control de ingreso y salida de vehículos.</p>
+        </div>
+
+        <div class="tarjeta">
+            <h3>Control de tiempo</h3>
+            <p>Consulta las horas que permaneces estacionado.</p>
+        </div>
+
+        <div class="tarjeta">
+            <h3>Factura digital</h3>
+            <p>Obtén tu comprobante de pago.</p>
+        </div>
+    </div>
+</section>
+
+<section id="tarifas" class="seccion">
+    <h2>Nuestras tarifas</h2>
+
+    <div class="tarjeta">
+        <p>Primera hora o fracción: <strong>Q10.00</strong></p>
+        <p>Cada hora adicional: <strong>Q5.00</strong></p>
+        <p>Máximo por día: <strong>Q60.00</strong></p>
+    </div>
+</section>
+
+<!-- REGISTRO DE CLIENTES -->
+
+<div id="registro" class="modal">
+    <div class="contenido">
+        <span class="cerrar" onclick="cerrarVentanas()">×</span>
+
+        <h2>Registro de cliente</h2>
+
+        <form id="formRegistro">
+
+            <label>Nombre completo:</label>
+            <input type="text" id="nombre" required>
+
+            <label>DPI:</label>
+            <input type="text" id="dpi" required>
+
+            <label>Teléfono:</label>
+            <input type="tel" id="telefono" required>
+
+            <label>Correo electrónico:</label>
+            <input type="email" id="correo" required>
+
+            <label>Placa del vehículo:</label>
+            <input type="text" id="placa" required>
+
+            <label>Tipo de vehículo:</label>
+            <select id="vehiculo" required>
+                <option value="">Seleccione</option>
+                <option>Automóvil</option>
+                <option>Motocicleta</option>
+                <option>Camioneta</option>
+                <option>Otro</option>
+            </select>
+
+            <label>Contraseña:</label>
+            <input type="password" id="contrasena" required minlength="4">
+
+            <button type="submit">Registrarme</button>
+
+        </form>
+    </div>
+</div>
+
+<!-- INICIO DE SESIÓN -->
+
+<div id="login" class="modal">
+    <div class="contenido">
+
+        <span class="cerrar" onclick="cerrarVentanas()">×</span>
+
+        <h2>Ingresar al sistema</h2>
+
+        <form id="formLogin">
+
+            <label>Correo o usuario:</label>
+            <input type="text" id="correoLogin" required>
+
+            <label>Contraseña:</label>
+            <input type="password" id="contrasenaLogin" required>
+
+            <button type="submit">Ingresar</button>
+
+        </form>
+
+        <p class="nota">
+            Administrador: usuario admin / contraseña 2026
+        </p>
+
+    </div>
+</div>
+
+<!-- PANEL DEL CLIENTE -->
+
+<section id="panel" class="seccion panel">
+
+    <h2>Panel del cliente</h2>
+
+    <h3>Bienvenido, <span id="bienvenida"></span></h3>
+
+    <div class="tarjetas">
+
+        <div class="tarjeta">
+            <h3>Mis datos</h3>
+            <p id="datosCliente"></p>
+        </div>
+
+        <div class="tarjeta">
+            <h3>Estacionamiento</h3>
+
+            <p id="estado">
+                No tienes ningún vehículo estacionado.
+            </p>
+
+            <button onclick="registrarIngreso()">
+                Registrar ingreso
+            </button>
+
+            <button onclick="registrarSalida()">
+                Registrar salida y pagar
+            </button>
+        </div>
+
+    </div>
+
+    <h3>Últimos movimientos</h3>
+
+    <div class="tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>Placa</th>
+                    <th>Ingreso</th>
+                    <th>Salida</th>
+                    <th>Tiempo</th>
+                    <th>Pago</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+
+            <tbody id="movimientos">
+                <tr>
+                    <td colspan="6">No hay movimientos registrados.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button onclick="cerrarSesion()">Cerrar sesión</button>
+
+</section>
+
+<!-- PANEL DEL ADMINISTRADOR -->
+
+<section id="adminPanel" class="seccion panel">
+
+    <h2>Panel del Administrador</h2>
+
+    <h3>Bienvenido, Administrador</h3>
+
+    <div class="estadisticas">
+
+        <div>
+            <h2 id="adminClientes">0</h2>
+            <p>Clientes registrados</p>
+        </div>
+
+        <div>
+            <h2 id="adminOcupados">0</h2>
+            <p>Vehículos estacionados</p>
+        </div>
+
+        <div>
+            <h2 id="adminDisponibles">20</h2>
+            <p>Espacios disponibles</p>
+        </div>
+
+    </div>
+
+    <h3>Clientes registrados</h3>
+
+    <div class="tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>DPI</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Placa</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaClientes"></tbody>
+        </table>
+    </div>
+
+    <h3>Todos los movimientos</h3>
+
+    <div class="tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Placa</th>
+                    <th>Ingreso</th>
+                    <th>Salida</th>
+                    <th>Pago</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaAdminMovimientos"></tbody>
+        </table>
+    </div>
+
+    <h3 id="totalIngresos">Ingresos totales: Q0.00</h3>
+
+    <button onclick="cerrarSesion()">Cerrar sesión</button>
+
+</section>
+
+<!-- FACTURA -->
+
+<div id="factura" class="modal">
+    <div class="contenido">
+
+        <span class="cerrar" onclick="cerrarVentanas()">×</span>
+
+        <div id="contenidoFactura"></div>
+
+        <button onclick="imprimirFactura()">Imprimir factura</button>
+
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 ParkControl - Administración de estacionamiento</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

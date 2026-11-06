@@ -1,0 +1,359 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #26354a;
+}
+
+/* ENCABEZADO */
+
+header {
+    background: #10233f;
+    color: white;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+/* BOTONES */
+
+button {
+    background: #2463eb;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 7px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #1749b5;
+}
+
+/* PÁGINA PRINCIPAL */
+
+.principal {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 70px 8%;
+    gap: 30px;
+}
+
+.principal h1 {
+    font-size: 42px;
+    color: #10233f;
+    margin-bottom: 20px;
+}
+
+.principal p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.imagen {
+    background: #dceafa;
+    border-radius: 20px;
+    padding: 45px;
+    text-align: center;
+    min-width: 280px;
+}
+
+.letra {
+    background: #2463eb;
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* ESTADÍSTICAS */
+
+.estadisticas {
+    background: #10233f;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding: 30px;
+    margin: 0 6%;
+    border-radius: 12px;
+}
+
+.estadisticas h2 {
+    font-size: 30px;
+    color: #70a5ff;
+}
+
+.estadisticas p {
+    color: white;
+}
+
+/* SECCIONES */
+
+.seccion {
+    padding: 55px 8%;
+    text-align: center;
+}
+
+.seccion h2 {
+    margin-bottom: 25px;
+    color: #10233f;
+}
+
+/* TARJETAS */
+
+.tarjetas {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tarjeta {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #00000010;
+    flex: 1;
+    min-width: 220px;
+    max-width: 350px;
+    margin: 10px;
+}
+
+.tarjeta h3 {
+    color: #2463eb;
+    margin-bottom: 15px;
+}
+
+.tarjeta p {
+    line-height: 1.7;
+}
+
+/* FORMULARIOS */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000099;
+    overflow-y: auto;
+}
+
+.contenido {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.contenido h2 {
+    color: #10233f;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cerrar {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    color: #777;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select {
+    padding: 12px;
+    border: 1px solid #ccd5e0;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+form button {
+    margin-top: 20px;
+}
+
+.nota {
+    text-align: center;
+    font-size: 12px;
+    color: #718096;
+    margin-top: 15px;
+}
+
+/* PANELES */
+
+.panel {
+    display: none;
+    background: #eaf0f8;
+    margin-top: 30px;
+}
+
+.panel h3 {
+    margin: 15px;
+}
+
+/* TABLAS */
+
+.tabla {
+    overflow-x: auto;
+    margin: 20px auto;
+}
+
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background: #10233f;
+    color: white;
+}
+
+td {
+    font-size: 13px;
+}
+
+/* FACTURA */
+
+#contenidoFactura {
+    text-align: left;
+    line-height: 1.9;
+}
+
+#contenidoFactura h2,
+#contenidoFactura h3 {
+    text-align: center;
+    color: #10233f;
+}
+
+#contenidoFactura hr {
+    margin: 15px 0;
+}
+
+/* PIE DE PÁGINA */
+
+footer {
+    background: #10233f;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* DISEÑO RESPONSIVO */
+
+@media (max-width: 700px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .principal {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .principal h1 {
+        font-size: 30px;
+    }
+
+    .estadisticas {
+        margin: 0 10px;
+        padding: 20px 5px;
+    }
+
+    .estadisticas h2 {
+        font-size: 22px;
+    }
+
+    .estadisticas p {
+        font-size: 11px;
+    }
+
+    .tarjetas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tarjeta {
+        width: 100%;
+    }
+}
+
+/* IMPRESIÓN DE FACTURA */
+
+@media print {
+
+    body * {
+        visibility: hidden;
+    }
+
+    #contenidoFactura,
+    #contenidoFactura * {
+        visibility: visible;
+    }
+
+    #contenidoFactura {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+}
